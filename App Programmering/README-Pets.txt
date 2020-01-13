@@ -3,6 +3,11 @@ Project Name:
 Pets
 
 
+Platform:
+---------
+React Native, Expo 
+
+
 Project description:
 --------------------
 An app that help people find a pet to adopt.
