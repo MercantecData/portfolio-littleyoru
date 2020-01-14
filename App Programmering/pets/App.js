@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from './pages/HomeScreen';
+import PetView from './pages/PetView';
+
+//import { AppNavigator } from './components/Navigation';
+
+const AppNavigator = createStackNavigator({
+  HomeScreen: { screen: HomeScreen },
+  PetView: { screen: PetView }
+}, {
+  initialRouteName: 'HomeScreen'
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends Component {
+  render() {
+    return <AppContainer />;
+  }
 }
 
 const styles = StyleSheet.create({

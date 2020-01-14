@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
+import snowball from '../assets/pets/Snowball.jpg'
 
 class Pet extends Component {
-    render() {
 
+    constructor (props) {
+        super(props)
+    }
+
+    render() {
         let testPet = {
             name: 'Snowball',
             sex: 'M',
@@ -12,14 +17,14 @@ class Pet extends Component {
             isAdult: false,
             type: 'cat',
             sterilised: false,
-            picUrl: '../assets/pets/Snowball.jpg'
+            picUrl: snowball
         };
 
         return (
             <View>
                 <Image source={testPet.picUrl} style={{height: 100, width: 100}} />
-                {testPet.name}
-                {testPet.race}
+                <Text>{testPet.name}</Text>
+                <Text>{testPet.race}</Text>
             </View>
         );
     }

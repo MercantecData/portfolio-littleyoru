@@ -3,6 +3,11 @@ Project Name:
 Pets
 
 
+Platform:
+---------
+React Native, Expo 
+
+
 Project description:
 --------------------
 An app that help people find a pet to adopt.
@@ -15,3 +20,4 @@ Features:
 - List information and pictures of animals that can be adopted
 - Search/filter pets
 - Account registration and login (optional, with facebook)
+
