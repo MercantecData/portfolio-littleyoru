@@ -5,12 +5,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './screens/HomeScreen';
 import PetView from './screens/PetView';
+import Shelters from './screens/Shelters';
 
 //import { AppNavigator } from './components/Navigation';
 
 const AppNavigator = createStackNavigator({
   HomeScreen: { screen: HomeScreen },
-  PetView: { screen: PetView }
+  PetView: { screen: PetView },
+  Shelters: { screen: Shelters }
 }, {
   initialRouteName: 'HomeScreen'
 });

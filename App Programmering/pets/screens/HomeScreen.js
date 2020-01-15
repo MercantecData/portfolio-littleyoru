@@ -17,6 +17,7 @@ class HomeScreen extends Component {
             <View style={styles.container}>
                 <Text>Open up App.js to start working on your app!</Text>
                 <Button title={'Go to Pets view'} onPress={() => {this.props.navigation.navigate('PetView')}}></Button>
+                <Button title={'Find Shelters'} onPress={() => {this.props.navigation.navigate('Shelters')}}></Button>
             </View>
         );
     }
