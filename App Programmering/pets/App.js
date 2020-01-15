@@ -4,11 +4,11 @@ import { createAppContainer } from 'react-navigation';
 
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './screens/HomeScreen';
-import PetsInfo from './screens/PetsInfo';
+import Pets from './screens/Pets';
 
 const AppNavigator = createStackNavigator({
   HomeScreen: { screen: HomeScreen },
-  PetsInfo: { screen: PetsInfo }
+  Pets: { screen: Pets }
 }, {
   initialRouteName: 'HomeScreen'
 });
