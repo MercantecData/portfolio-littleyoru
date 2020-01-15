@@ -16,9 +16,22 @@ class PetModal extends Component {
         });
     }
 
+    getCubName = (type) => {
+        switch (type) {
+            case 'cat':
+                return 'Kitten';
+            case 'dog':
+                return 'Puppy';
+            default:
+                return 'Not adult';
+        }
+    }
+
     render() {
 
-        let { item } = this.props
+        let { item } = this.props;
+        let canReproduceText = item.sex === 'M' ? 'Castrated' : 'Sterilised';
+
         return (
             <Modal 
                 style={styles.modal} 
@@ -29,9 +42,13 @@ class PetModal extends Component {
                     <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
                         <Text style={styles.closeBtn}>X</Text>
                     </TouchableHighlight>
-                    <Image source={item.picUrl} style={{maxWidth: 100, maxHeight: 100}} />
-                    <Text>{item.name}</Text>
-                    <Text>{item.race}</Text>
+                    <Image source={item.picUrl} style={styles.image} />
+                    <Text>Name: {item.name}</Text>
+                    <Text>Race: {item.race}</Text>
+                    <Text>Sex: {item.sex}, {item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
+                    <Text>{canReproduceText}: {item.sterilised ? 'yes' : 'no'}</Text>
+                    <Text>Age: {item.age}</Text>
+                    <Text>Location: {item.city}</Text>
                 </View>
 
             </Modal>
@@ -46,7 +63,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     modalContent: {
-        backgroundColor: '#DDDDDD'
+        backgroundColor: '#DDDDDD',
+        padding: 8
     },
     closeBtn: {
         paddingHorizontal: 16,
@@ -56,6 +74,10 @@ const styles = StyleSheet.create({
     },
     closeBg: {
         alignSelf: 'flex-end'
+    },
+    image: {
+        maxWidth: 300,
+        maxHeight: 300
     }
 })
 
