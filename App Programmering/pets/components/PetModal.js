@@ -49,6 +49,7 @@ class PetModal extends Component {
                     <Text>{canReproduceText}: {item.sterilised ? 'yes' : 'no'}</Text>
                     <Text>Age: {item.age}</Text>
                     <Text>Location: {item.city}</Text>
+                    <Text>My story: {item.description}</Text>
                 </View>
 
             </Modal>

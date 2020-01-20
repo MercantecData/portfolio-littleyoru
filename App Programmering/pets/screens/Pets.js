@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, FlatList, StyleSheet, TouchableHighlight, ScrollView, Dimensions } from 'react-native';
 import PetCard from '../components/PetCard';
 import PetModal from '../components/PetModal';
 import snowball from '../assets/pets/Snowball.jpg';
@@ -11,6 +11,8 @@ import whitefang from '../assets/pets/WhiteFang.jpg';
 import bobby from '../assets/pets/Bobby.jpg';
 import lady from '../assets/pets/Lady.jpg';
 import beethoven from '../assets/pets/Beethoven.jpg';
+
+var deviceWidth = Dimensions.get('window').width;
 
 class PetView extends Component {
     // create the title for the screen
@@ -39,7 +41,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Viborg',
-                picUrl: snowball
+                picUrl: snowball,
+                description: ''
             }, 
             {
                 key: 2,
@@ -51,7 +54,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Aalborg',
-                picUrl: nightshadow
+                picUrl: nightshadow,
+                description: ''
             },
             {
                 key: 3,
@@ -63,7 +67,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Silkeborg',
-                picUrl: mjavse
+                picUrl: mjavse,
+                description: ''
             },
             {
                 key: 4,
@@ -75,7 +80,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Viborg',
-                picUrl: garfield
+                picUrl: garfield,
+                description: ''
             },
             {
                 key: 5,
@@ -87,7 +93,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Aalborg',
-                picUrl: shadow
+                picUrl: shadow,
+                description: ''
             },
             {
                 key: 6,
@@ -99,7 +106,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Aalborg',
-                picUrl: whitefang
+                picUrl: whitefang,
+                description: ''
             },
             {
                 key: 7,
@@ -111,7 +119,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: true,
                 city: 'Roskilde',
-                picUrl: bobby
+                picUrl: bobby,
+                description: ''
             },
             {
                 key: 8,
@@ -123,7 +132,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: true,
                 city: 'Copenhagen',
-                picUrl: lady
+                picUrl: lady,
+                description: ''
             },
             {
                 key: 9,
@@ -135,7 +145,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Roskilde',
-                picUrl: beethoven
+                picUrl: beethoven,
+                description: "Moose is a big and boisterous boy who can't wait to join your family! This lovebug loves all people he meets, especially children, and will bring endless joy to any household he joins. He pulls hard on leash and is very excitable, and should therefore go to a physically strong family with large breed experience. If your family sounds like the right fit, send in an application to meet him today!"
             }
         ];
         this.setState({
@@ -158,17 +169,20 @@ class PetView extends Component {
 
     render() {
 
-        const petItem = ({item}) => {
+        const petItem = (item) => {
             return (
-                <TouchableHighlight onPress={() => this.toggleModalVisibility(item.key - 1)} style={styles.item}>
-                    <PetCard key={item.key} info={item} />
+                <TouchableHighlight onPress={() => this.toggleModalVisibility(item.key - 1)} key={item.key} style={styles.touchPetCard}>
+                    <PetCard info={item} />
                 </TouchableHighlight>
             )
         }
 
         return (
             <View style={styles.container}>
-                <FlatList data={this.state.petList} renderItem={petItem} numColumns={3} />
+                <ScrollView horizontal pagingEnabled>
+                    {this.state.petList.map(petItem)}
+                </ScrollView>
+                {/*<FlatList data={this.state.petList} renderItem={petItem} numColumns={3} />*/}
                 {this.state.modalOpened && <PetModal ref={ref => this.petModal = ref} item={this.state.petList[this.state.selectedPet]} />}
             </View>
         );
@@ -177,17 +191,15 @@ class PetView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingTop: 16
+        flex: 1
     },
-    item: {
+    touchPetCard: {
+        width: deviceWidth,
         flex: 1,
-        flexDirection: 'column',
-        margin: 1,
-        padding: 16,
-        alignSelf: 'flex-start',
+        //backgroundColor: '#d3d3d3',
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#DDDDDD'
+        flexDirection: 'row'
     }
   })
   
