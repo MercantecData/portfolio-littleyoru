@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
+//import { Icon } from 'react-native-elements';
+import GenderIcon from '../components/GenderIcon';
 
 class PetCard extends Component {
 
@@ -10,14 +11,14 @@ class PetCard extends Component {
 
     render() {
 
-        let icon = this.props.info.sex === 'F' ? 'female-symbol' : 'male-symbol'
+        //let icon = this.props.info.sex === 'F' ? 'female-symbol' : 'male-symbol'
 
         return (
             <View style={styles.item}>
                 <Image source={this.props.info.picUrl} style={styles.image} />
                 <Text style={styles.title}>{this.props.info.name}</Text>
                 <View style={styles.infoContainer}>
-                    <Icon name={icon} type='foundation' color='#148C80' />
+                    <GenderIcon sex={this.props.info.sex} />
                     <Text style={styles.text}>{this.props.info.race}</Text>
                 </View>
                 <Text style={styles.text}>{this.props.info.city}</Text>

@@ -159,9 +159,7 @@ class PetView extends Component {
             selectedPet: key,
             modalOpened: true
         }, () => {
-            console.log('test')
             if (this.petModal) {
-                console.log('here')
                 this.petModal.toggleModal();
             }
         });
@@ -196,7 +194,6 @@ const styles = StyleSheet.create({
     touchPetCard: {
         width: deviceWidth,
         flex: 1,
-        //backgroundColor: '#d3d3d3',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'

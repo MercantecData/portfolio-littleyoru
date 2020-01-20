@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Text, View, TouchableHighlight, StyleSheet, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
+import GenderIcon from './GenderIcon';
+import InfoLine from './InfoLine';
 
 class PetModal extends Component {
 
@@ -38,20 +41,27 @@ class PetModal extends Component {
                 visible={this.state.visible} 
                 onBackDropPress={() => this.toggleModal()} 
                 onRequestClose={() => this.toggleModal()}>
-                <View style={styles.modalContent}>
-                    <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
-                        <Text style={styles.closeBtn}>X</Text>
-                    </TouchableHighlight>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalHeader}>
+                        <Text style={styles.modalHeaderText}>Details</Text>
+                        <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
+                            <Icon name={'close'} type='AntDesign' color='#262626' />
+                        </TouchableHighlight>
+                    </View>
                     <Image source={item.picUrl} style={styles.image} />
-                    <Text>Name: {item.name}</Text>
-                    <Text>Race: {item.race}</Text>
-                    <Text>Sex: {item.sex}, {item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
-                    <Text>{canReproduceText}: {item.sterilised ? 'yes' : 'no'}</Text>
-                    <Text>Age: {item.age}</Text>
-                    <Text>Location: {item.city}</Text>
+                    <View style={styles.modalContent}>
+                        <InfoLine label={'Name: '} text={item.name} />
+                        <View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
+                            <GenderIcon sex={item.sex} />
+                            <Text style={{marginLeft: 8}}>{item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
+                        </View>
+                        <InfoLine label={'Race: '} text={item.race} />
+                        <InfoLine label={'Age: '} text={item.age} />
+                        <InfoLine label={canReproduceText + ': '} text={item.sterilised ? 'yes' : 'no'} />
+                        <InfoLine label={'Location: '} text={item.city} />
+                    </View>
                     <Text>My story: {item.description}</Text>
                 </View>
-
             </Modal>
         );
     }
@@ -63,22 +73,40 @@ const styles = StyleSheet.create({
         padding: 8,
         flex: 1
     },
-    modalContent: {
+    modalHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingBottom: 16
+        // justifyContent: 'space-between'
+    },
+    modalHeaderText: {
+        fontSize: 24,
+        flex: 1,
+        alignSelf: 'center'
+    },
+    modalContainer: {
         backgroundColor: '#DDDDDD',
         padding: 8
+        // alignItems: 'center'
     },
-    closeBtn: {
-        paddingHorizontal: 16,
-        color: '#38AAEB',
-        fontWeight: '900',
-        fontSize: 32
+    modalContent: {
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        alignContent: 'stretch'
     },
+    // gridCell: {
+    //     padding: 8,
+    //     fontSize: 24,
+    //     fontWeight: '900'
+    // },
     closeBg: {
         alignSelf: 'flex-end'
     },
     image: {
         maxWidth: 300,
-        maxHeight: 300
+        maxHeight: 300,
+        alignSelf: 'center'
     }
 })
 

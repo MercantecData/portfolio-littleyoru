@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-
 import { createStackNavigator } from 'react-navigation-stack';
+// import { ScreenOrientation } from 'expo';
 import HomeScreen from './screens/HomeScreen';
 import Pets from './screens/Pets';
 
