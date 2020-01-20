@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Text, View, TouchableHighlight, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import GenderIcon from './GenderIcon';
-import InfoLine from './InfoLine';
+import InfoCell from './InfoCell';
 
 class PetModal extends Component {
 
@@ -35,6 +35,10 @@ class PetModal extends Component {
         let { item } = this.props;
         let canReproduceText = item.sex === 'M' ? 'Castrated' : 'Sterilised';
 
+        let genderIcon = (
+            <GenderIcon sex={item.sex} />
+        )
+
         return (
             <Modal 
                 style={styles.modal} 
@@ -51,17 +55,21 @@ class PetModal extends Component {
                         </View>
                         <Image source={item.picUrl} style={styles.image} />
                         <View style={styles.modalContent}>
-                            <InfoLine label={'Name: '} text={item.name} />
-                            <View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
+                            <InfoCell label={'Name:'} text={item.name} />
+                            {/*<View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
                                 <GenderIcon sex={item.sex} />
                                 <Text style={{marginLeft: 8}}>{item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
-                            </View>
-                            <InfoLine label={'Race: '} text={item.race} />
-                            <InfoLine label={'Age: '} text={item.age} />
-                            <InfoLine label={canReproduceText + ': '} text={item.sterilised ? 'yes' : 'no'} />
-                            <InfoLine label={'Location: '} text={item.city} />
+                            </View>*/}
+                            <InfoCell icon={genderIcon} text={item.isAdult ? 'Adult' : this.getCubName(item.type)} />
+                            <InfoCell label={'Race:'} text={item.race} />
+                            <InfoCell label={'Age:'} text={item.age} />
+                            <InfoCell label={canReproduceText + ':'} text={item.sterilised ? 'Yes' : 'No'} />
+                            <InfoCell label={'Location:'} text={item.city} />
                         </View>
-                        <Text>My story: {item.description}</Text>
+                        <View>
+                            <Text style={styles.descriptionLabel}>My story:</Text>
+                            <Text style={styles.description}>{item.description}</Text>
+                        </View>
                     </View>
                 </SafeAreaView>
             </Modal>
@@ -89,18 +97,27 @@ const styles = StyleSheet.create({
         padding: 8
     },
     modalContent: {
-        alignItems: 'center',
+        alignItems: 'flex-start',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        alignContent: 'stretch'
+        //alignContent: 'stretch'
     },
     closeBg: {
         alignSelf: 'flex-end'
     },
     image: {
-        maxWidth: 300,
-        maxHeight: 300,
+        maxWidth: 350,
+        maxHeight: 350,
         alignSelf: 'center'
+    },
+    description: {
+        fontSize: 16,
+        paddingHorizontal: 8
+    },
+    descriptionLabel: {
+        fontSize: 16,
+        fontWeight: '700',
+        padding: 8
     }
 })
 
