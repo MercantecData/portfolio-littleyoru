@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, View, TouchableHighlight, StyleSheet, Image } from 'react-native';
+import { Modal, Text, View, TouchableHighlight, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import GenderIcon from './GenderIcon';
 import InfoLine from './InfoLine';
@@ -41,27 +41,29 @@ class PetModal extends Component {
                 visible={this.state.visible} 
                 onBackDropPress={() => this.toggleModal()} 
                 onRequestClose={() => this.toggleModal()}>
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.modalHeaderText}>Details</Text>
-                        <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
-                            <Icon name={'close'} type='AntDesign' color='#262626' />
-                        </TouchableHighlight>
-                    </View>
-                    <Image source={item.picUrl} style={styles.image} />
-                    <View style={styles.modalContent}>
-                        <InfoLine label={'Name: '} text={item.name} />
-                        <View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
-                            <GenderIcon sex={item.sex} />
-                            <Text style={{marginLeft: 8}}>{item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
+                <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalHeaderText}>Details</Text>
+                            <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
+                                <Icon name={'close'} type='AntDesign' color='#262626' />
+                            </TouchableHighlight>
                         </View>
-                        <InfoLine label={'Race: '} text={item.race} />
-                        <InfoLine label={'Age: '} text={item.age} />
-                        <InfoLine label={canReproduceText + ': '} text={item.sterilised ? 'yes' : 'no'} />
-                        <InfoLine label={'Location: '} text={item.city} />
+                        <Image source={item.picUrl} style={styles.image} />
+                        <View style={styles.modalContent}>
+                            <InfoLine label={'Name: '} text={item.name} />
+                            <View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
+                                <GenderIcon sex={item.sex} />
+                                <Text style={{marginLeft: 8}}>{item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
+                            </View>
+                            <InfoLine label={'Race: '} text={item.race} />
+                            <InfoLine label={'Age: '} text={item.age} />
+                            <InfoLine label={canReproduceText + ': '} text={item.sterilised ? 'yes' : 'no'} />
+                            <InfoLine label={'Location: '} text={item.city} />
+                        </View>
+                        <Text>My story: {item.description}</Text>
                     </View>
-                    <Text>My story: {item.description}</Text>
-                </View>
+                </SafeAreaView>
             </Modal>
         );
     }
@@ -69,15 +71,13 @@ class PetModal extends Component {
 
 const styles = StyleSheet.create({
     modal: {
-        marginTop: 16,
-        padding: 8,
-        flex: 1
+        flex: 1,
+        backgroundColor: '#F2F2F2'
     },
     modalHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingBottom: 16
-        // justifyContent: 'space-between'
+        paddingBottom: 8
     },
     modalHeaderText: {
         fontSize: 24,
@@ -85,9 +85,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     modalContainer: {
-        backgroundColor: '#DDDDDD',
+        backgroundColor: 'transparent',
         padding: 8
-        // alignItems: 'center'
     },
     modalContent: {
         alignItems: 'center',
@@ -95,11 +94,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'stretch'
     },
-    // gridCell: {
-    //     padding: 8,
-    //     fontSize: 24,
-    //     fontWeight: '900'
-    // },
     closeBg: {
         alignSelf: 'flex-end'
     },

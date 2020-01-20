@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 //import { Icon } from 'react-native-elements';
 import GenderIcon from '../components/GenderIcon';
+import { SafeAreaView } from 'react-navigation';
 
 class PetCard extends Component {
 
