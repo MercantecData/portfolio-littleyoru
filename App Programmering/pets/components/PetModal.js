@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, View, TouchableHighlight, StyleSheet, Image, SafeAreaView } from 'react-native';
+import { Modal, Text, View, TouchableHighlight, StyleSheet, Image, SafeAreaView, ScrollView, FlatList } from 'react-native';
 import { Icon } from 'react-native-elements';
 import GenderIcon from './GenderIcon';
 import InfoCell from './InfoCell';
@@ -19,7 +19,7 @@ class PetModal extends Component {
         });
     }
 
-    getCubName = (type) => {
+    getCubType = (type) => {
         switch (type) {
             case 'cat':
                 return 'Kitten';
@@ -47,29 +47,27 @@ class PetModal extends Component {
                 onRequestClose={() => this.toggleModal()}>
                 <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
                     <View style={styles.modalContainer}>
-                        <View style={styles.modalHeader}>
-                            <Text style={styles.modalHeaderText}>Details</Text>
-                            <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
-                                <Icon name={'close'} type='AntDesign' color='#262626' />
-                            </TouchableHighlight>
-                        </View>
-                        <Image source={item.picUrl} style={styles.image} />
-                        <View style={styles.modalContent}>
-                            <InfoCell label={'Name:'} text={item.name} />
-                            {/*<View style={{flexDirection: 'row', padding: 8, alignItems: 'center'}}>
-                                <GenderIcon sex={item.sex} />
-                                <Text style={{marginLeft: 8}}>{item.isAdult ? 'Adult' : this.getCubName(item.type) }</Text>
-                            </View>*/}
-                            <InfoCell icon={genderIcon} text={item.isAdult ? 'Adult' : this.getCubName(item.type)} />
-                            <InfoCell label={'Race:'} text={item.race} />
-                            <InfoCell label={'Age:'} text={item.age} />
-                            <InfoCell label={canReproduceText + ':'} text={item.sterilised ? 'Yes' : 'No'} />
-                            <InfoCell label={'Location:'} text={item.city} />
-                        </View>
-                        <View>
-                            <Text style={styles.descriptionLabel}>My story:</Text>
-                            <Text style={styles.description}>{item.description}</Text>
-                        </View>
+                        <ScrollView style={{flex: 1}}>
+                            <View style={styles.modalHeader}>
+                                <Text style={styles.modalHeaderText}>Details</Text>
+                                <TouchableHighlight onPress={() => this.toggleModal()} style={styles.closeBg}>
+                                    <Icon name={'close'} type='AntDesign' color='#262626' />
+                                </TouchableHighlight>
+                            </View>
+                            <Image source={item.picUrl} style={styles.image} />
+                            <View style={styles.modalContent}>
+                                <InfoCell label={'Name:'} text={item.name} />
+                                <InfoCell icon={genderIcon} text={item.isAdult ? 'Adult' : this.getCubType(item.type)} />
+                                <InfoCell label={'Race:'} text={item.race} />
+                                <InfoCell label={'Age:'} text={item.age} />
+                                <InfoCell label={canReproduceText + ':'} text={item.sterilised ? 'Yes' : 'No'} />
+                                <InfoCell label={'Location:'} text={item.city} />
+                            </View>
+                            <View style={{height: 100}}>
+                                <Text style={styles.descriptionLabel}>My story:</Text>
+                                <Text style={styles.description}>{item.description}</Text>
+                            </View>
+                        </ScrollView>
                     </View>
                 </SafeAreaView>
             </Modal>
@@ -94,7 +92,8 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         backgroundColor: 'transparent',
-        padding: 8
+        padding: 8,
+        flex: 1
     },
     modalContent: {
         alignItems: 'flex-start',

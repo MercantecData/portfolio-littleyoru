@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, StyleSheet, TouchableHighlight, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableHighlight, ScrollView, Dimensions } from 'react-native';
 import PetCard from '../components/PetCard';
 import PetModal from '../components/PetModal';
 import snowball from '../assets/pets/Snowball.jpg';
@@ -180,7 +180,6 @@ class PetView extends Component {
                     <ScrollView horizontal pagingEnabled>
                         {this.state.petList.map(petItem)}
                     </ScrollView>
-                    {/*<FlatList data={this.state.petList} renderItem={petItem} numColumns={3} />*/}
                     {this.state.modalOpened && <PetModal ref={ref => this.petModal = ref} item={this.state.petList[this.state.selectedPet]} />}
                 </View>
         );
