@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-// import { ScreenOrientation } from 'expo';
 import HomeScreen from './screens/HomeScreen';
 import Pets from './screens/Pets';
 import Shelters from './screens/Shelters';
 
 const AppNavigator = createStackNavigator({
   HomeScreen: { screen: HomeScreen },
-  Pets: { screen: Pets }
+  Pets: { screen: Pets },
   Shelters: { screen: Shelters }
 }, {
   initialRouteName: 'HomeScreen'
@@ -27,9 +26,6 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    flex: 1
   },
 });

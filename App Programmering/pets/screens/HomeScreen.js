@@ -15,12 +15,15 @@ class HomeScreen extends Component {
     render () {
         return (
             <View style={styles.container}>
-                <Text>Test</Text>
-                {/*<Button title={'Go to Pets view'} onPress={() => {this.props.navigation.navigate('Pets')}}></Button>*/}
+                <TouchableHighlight style={styles.btn}>
+                    <Text style={styles.btnText}>Missing pets</Text>
+                </TouchableHighlight>
                 <TouchableHighlight style={styles.btn} onPress={() => {this.props.navigation.navigate('Pets')}}>
                     <Text style={styles.btnText}>Adopt a pet</Text>
                 </TouchableHighlight>
-                <Button title={'Find Shelters'} onPress={() => {this.props.navigation.navigate('Shelters')}}></Button>
+                <TouchableHighlight style={styles.btn} onPress={() => {this.props.navigation.navigate('Shelters')}}>
+                    <Text style={styles.btnText}>Find Shelters</Text>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -35,7 +38,9 @@ const styles = StyleSheet.create({
     },
     btn: {
         backgroundColor: '#C1D90B',
-        padding: 8,
+        width: '70%',
+        marginBottom: 16,
+        padding: 16,
         borderRadius: 5,
         shadowOffset:{  width: 5,  height: 10,  },
         shadowColor: '#000000',
@@ -45,7 +50,8 @@ const styles = StyleSheet.create({
     },
     btnText: {
         fontSize: 18,
-        fontWeight: '700'
+        fontWeight: '700',
+        textAlign: 'center'
     }
   });
 
