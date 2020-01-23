@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight } from 'react-native';
 
 class HomeScreen extends Component {
 
@@ -15,8 +15,11 @@ class HomeScreen extends Component {
     render () {
         return (
             <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Button title={'Go to Pets view'} onPress={() => {this.props.navigation.navigate('PetView')}}></Button>
+                <Text>Test</Text>
+                {/*<Button title={'Go to Pets view'} onPress={() => {this.props.navigation.navigate('Pets')}}></Button>*/}
+                <TouchableHighlight style={styles.btn} onPress={() => {this.props.navigation.navigate('Pets')}}>
+                    <Text style={styles.btnText}>Adopt a pet</Text>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -29,6 +32,20 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    btn: {
+        backgroundColor: '#C1D90B',
+        padding: 8,
+        borderRadius: 5,
+        shadowOffset:{  width: 5,  height: 10,  },
+        shadowColor: '#000000',
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 1
+    },
+    btnText: {
+        fontSize: 18,
+        fontWeight: '700'
+    }
   });
 
 export default HomeScreen;
