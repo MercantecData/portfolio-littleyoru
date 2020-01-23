@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-
 import { createStackNavigator } from 'react-navigation-stack';
+// import { ScreenOrientation } from 'expo';
 import HomeScreen from './screens/HomeScreen';
-import PetView from './screens/PetView';
+import Pets from './screens/Pets';
 import Shelters from './screens/Shelters';
-
-//import { AppNavigator } from './components/Navigation';
 
 const AppNavigator = createStackNavigator({
   HomeScreen: { screen: HomeScreen },
-  PetView: { screen: PetView },
+  Pets: { screen: Pets }
   Shelters: { screen: Shelters }
 }, {
   initialRouteName: 'HomeScreen'
@@ -21,15 +19,17 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
   render() {
-    return <AppContainer />;
+    return (
+         <AppContainer />
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
