@@ -13,6 +13,7 @@ import lady from '../assets/pets/Lady.jpg';
 import beethoven from '../assets/pets/Beethoven.jpg';
 
 var deviceWidth = Dimensions.get('window').width;
+var deviceHeight = Dimensions.get('window').height;
 
 class PetView extends Component {
     // create the title for the screen
@@ -25,8 +26,12 @@ class PetView extends Component {
         this.state = {
             petList: [],
             modalOpened: false,
-            selectedPet: 0
+            selectedPet: 0,
+            deviceWidth: 0,
+            orientation: 'p' // 'p' = portrait , 'l' = landscape
         };
+
+        this.changeOrientation = this.changeOrientation.bind(this)
     }
 
     componentDidMount() {
@@ -149,9 +154,29 @@ class PetView extends Component {
                 description: "Moose is a big and boisterous boy who can't wait to join your family! This lovebug loves all people he meets, especially children, and will bring endless joy to any household he joins. He pulls hard on leash and is very excitable, and should therefore go to a physically strong family with large breed experience. If your family sounds like the right fit, send in an application to meet him today!"
             }
         ];
+
+        Dimensions.addEventListener('change', this.changeOrientation);
+
         this.setState({
             petList: testPetList
         });
+    }
+
+    changeOrientation () {
+    
+        const { height, width } = Dimensions.get('window');
+        let isPortrait = height >= width;
+
+        this.setState({
+            orientation: isPortrait ? 'p' : 'l',
+            deviceWidth: Dimensions.get('window').width
+        }, () => {
+            deviceWidth = this.state.deviceWidth
+        })
+    }
+
+    componentWillUnmount() {
+        Dimensions.removeEventListener('change', this.changeOrientation);
     }
 
     toggleModalVisibility = (key = 0) => {
@@ -168,8 +193,11 @@ class PetView extends Component {
     render() {
 
         const petItem = (item) => {
+
+            let cardStyle = this.state.orientation === 'p' ? styles.touchPetCardPortrait : styles.touchPetCardLandscape;
+
             return (
-                <TouchableHighlight onPress={() => this.toggleModalVisibility(item.key - 1)} key={item.key} style={styles.touchPetCard}>
+                <TouchableHighlight onPress={() => this.toggleModalVisibility(item.key - 1)} key={item.key} style={cardStyle}>
                     <PetCard info={item} />
                 </TouchableHighlight>
             )
@@ -190,8 +218,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    touchPetCard: {
+    touchPetCardPortrait: {
         width: deviceWidth,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    touchPetCardLandscape: {
+        width: deviceHeight,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
