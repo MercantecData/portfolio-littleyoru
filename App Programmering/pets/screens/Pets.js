@@ -46,6 +46,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Viborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: snowball,
                 description: ''
             }, 
@@ -59,6 +61,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Aalborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: nightshadow,
                 description: ''
             },
@@ -72,6 +76,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Silkeborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: mjavse,
                 description: ''
             },
@@ -85,6 +91,8 @@ class PetView extends Component {
                 type: 'cat',
                 sterilised: false,
                 city: 'Viborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: garfield,
                 description: ''
             },
@@ -98,6 +106,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Aalborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: shadow,
                 description: ''
             },
@@ -111,6 +121,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Aalborg',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: whitefang,
                 description: ''
             },
@@ -124,6 +136,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: true,
                 city: 'Roskilde',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: bobby,
                 description: ''
             },
@@ -137,6 +151,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: true,
                 city: 'Copenhagen',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: lady,
                 description: ''
             },
@@ -150,6 +166,8 @@ class PetView extends Component {
                 type: 'dog',
                 sterilised: false,
                 city: 'Roskilde',
+                email: 'test@test.dk',
+                phone: '00000000',
                 picUrl: beethoven,
                 description: "Moose is a big and boisterous boy who can't wait to join your family! This lovebug loves all people he meets, especially children, and will bring endless joy to any household he joins. He pulls hard on leash and is very excitable, and should therefore go to a physically strong family with large breed experience. If your family sounds like the right fit, send in an application to meet him today!"
             }

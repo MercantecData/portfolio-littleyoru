@@ -3,6 +3,7 @@ import { Modal, Text, View, TouchableHighlight, StyleSheet, Image, SafeAreaView,
 import { Icon } from 'react-native-elements';
 import GenderIcon from './GenderIcon';
 import InfoCell from './InfoCell';
+import COLORS from '../theme';
 
 class PetModal extends Component {
 
@@ -63,10 +64,13 @@ class PetModal extends Component {
                                 <InfoCell label={canReproduceText + ':'} text={item.sterilised ? 'Yes' : 'No'} />
                                 <InfoCell label={'Location:'} text={item.city} />
                             </View>
-                            <View style={{height: 100}}>
+                            <View style={{paddingBottom: 16}}>
                                 <Text style={styles.descriptionLabel}>My story:</Text>
                                 <Text style={styles.description}>{item.description}</Text>
                             </View>
+                            <TouchableHighlight style={styles.adoptBtn}>
+                                <Text style={styles.adoptText}>Adopt me</Text>
+                            </TouchableHighlight>
                         </ScrollView>
                     </View>
                 </SafeAreaView>
@@ -117,6 +121,21 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '700',
         padding: 8
+    },
+    adoptBtn: {
+        backgroundColor: '#C1D90B',
+        padding: 8,
+        alignSelf: 'center',
+        borderRadius: 5,
+        shadowOffset:{  width: 5,  height: 10,  },
+        shadowColor: '#000000',
+        shadowOpacity: 0.8,
+        shadowRadius: 5,
+        elevation: 1
+    },
+    adoptText: {
+        fontSize: 18,
+        fontWeight: '700'
     }
 })
 
