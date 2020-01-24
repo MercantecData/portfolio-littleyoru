@@ -23,7 +23,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses the GPS to find your current location.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses the GPS to find your current location and to find the closest animal shelters.",
+        "NSLocationAlwaysUsageDescription": "This app uses the GPS to find your current location."
+      }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_FINE_LOCATION"
+      ]
     }
   }
 }

@@ -63,6 +63,8 @@ class PetModal extends Component {
                                 <InfoCell label={'Age:'} text={item.age} />
                                 <InfoCell label={canReproduceText + ':'} text={item.sterilised ? 'Yes' : 'No'} />
                                 <InfoCell label={'Location:'} text={item.city} />
+                                <InfoCell label={'Phone:'} text={item.phone} />
+                                <InfoCell label={'Email:'} text={item.email} />
                             </View>
                             <View style={{paddingBottom: 16}}>
                                 <Text style={styles.descriptionLabel}>My story:</Text>

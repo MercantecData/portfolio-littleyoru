@@ -11,15 +11,25 @@ const AppNavigator = createStackNavigator({
   Pets: { screen: Pets },
   Shelters: { screen: Shelters }
 }, {
-  initialRouteName: 'HomeScreen'
+  initialRouteName: 'HomeScreen',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#148C80'
+    },
+    headerTintColor: '#ffffff',
+    headerTitleStyle: {
+        fontWeight: 'bold'
+    }
+  }
 });
 
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
+  
   render() {
     return (
-         <AppContainer />
+         <AppContainer style={styles.nav} />
     )
   }
 }
@@ -28,4 +38,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  nav: {
+    backgroundColor: 'yellow',
+    borderWidth: 1,
+    borderColor: 'blue'
+  }
 });
