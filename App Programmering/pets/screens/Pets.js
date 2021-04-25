@@ -64,7 +64,7 @@ class PetView extends Component {
                 email: 'test@test.dk',
                 phone: '00000000',
                 picUrl: nightshadow,
-                description: ''
+                description: "I'm a 6 months old cuddle bug! I am very social and love to be pet and played with. I like other cats and get along with them very well. I would make a fun loving addition to your home! Let me show you how much I can love you!"
             },
             {
                 key: 3,
