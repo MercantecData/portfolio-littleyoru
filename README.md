@@ -1,7 +1,5 @@
-Elena Ene
-----------
 
-Projects:
+School Projects:
 -------------
 1. Name: Pets
     - Path: App Programmering -> Pets
